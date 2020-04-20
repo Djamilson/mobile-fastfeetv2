@@ -57,11 +57,12 @@ export default function Dashboard({navigation}) {
     Animated.timing(animatedValue, {
       toValue: 1,
       duration: 350,
+      useNativeDriver: true,
     }).start(closeToast());
   }
 
   async function loadPage(pageNumber = page, shouldRefresh = false) {
-   
+
     setCount(count + 1);
     try {
       if (loading) return;
