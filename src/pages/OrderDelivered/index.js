@@ -28,7 +28,9 @@ import {
 } from './styles';
 
 export default function OrderDelivered({navigation}) {
-  const deliveryman_id = useSelector((state) => state.user.profile.id);
+  const deliveryman_id = useSelector(
+    (state) => state.user.profile.deliverymanId,
+  );
   const [deliveries, setDeliveries] = useState([]);
 
   const animatedValue = new Animated.Value(0);

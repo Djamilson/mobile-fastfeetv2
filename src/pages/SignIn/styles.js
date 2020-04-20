@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 
 import Button from '~/components/Button';
 import Input from '~/components/Input';
-import colors from '~/styles/colors';
+import {colors, fonts} from '~/styles';
 
 export const Container = styled.KeyboardAvoidingView.attrs({
   enabled: Platform.os === 'ios',
@@ -19,6 +19,13 @@ export const Container = styled.KeyboardAvoidingView.attrs({
 export const Form = styled.View`
   align-self: stretch;
   margin-top: 0px;
+`;
+
+export const Label = styled.Text`
+  font-size: ${fonts.regular}px;
+  color: ${colors.white_};
+  font-weight: bold;
+  margin-bottom: 5px;
 `;
 
 export const FormInput = styled(Input)``;

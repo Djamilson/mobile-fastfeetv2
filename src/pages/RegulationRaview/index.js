@@ -14,7 +14,9 @@ export default function RegulationRaview() {
   );
 
   // deliveryman_id
-  const [id] = useState(useSelector((state) => state.user.profile.id));
+  const [id] = useState(
+    useSelector((state) => state.user.profile.deliverymanId),
+  );
 
   function handleAcceptRegulation() {
     const newPrivacy = !privacy;
