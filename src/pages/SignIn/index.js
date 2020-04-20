@@ -5,17 +5,26 @@ import logo from '~/assets/fastfeet-logo.png';
 import Background from '~/components/Background';
 import {signInRequest} from '~/store/modules/auth/actions';
 
-import {Container, Form, FormInput, SubmitButton, LogoImg} from './styles';
+import {
+  Container,
+  Form,
+  Label,
+  FormInput,
+  SubmitButton,
+  LogoImg,
+} from './styles';
 
 export default function SignIn() {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.auth.loading);
 
-  const password_Ref = useRef();
+  const [email, setEmail] = useState('');
+
+  const passwordRef = useRef();
   const [password, setPassword] = useState('');
 
   async function handleSubmit() {
-    dispatch(signInRequest(password));
+    dispatch(signInRequest(email, password));
   }
 
   return (
@@ -23,13 +32,26 @@ export default function SignIn() {
       <Container>
         <LogoImg source={logo} />
         <Form>
+          <Label>Email</Label>
           <FormInput
-            icon="https"
-            keyboardType="number-pad"
+            icon="mail-outline"
+            keyboardType="email-address"
             autoCorrect={false}
             autoCapitalize="none"
-            placeholder="Informe seu ID de cadastro"
-            ref={password_Ref}
+            placeholder="Digite seu e-mail"
+            returnKeyType="next"
+            onSubmitEditing={() => passwordRef.current.focus()}
+            value={email}
+            onChangeText={setEmail}
+          />
+
+          <Label>Sua senha</Label>
+
+          <FormInput
+            icon="lock-outline"
+            secureTextEntry
+            placeholder="Sua senha secreta"
+            ref={passwordRef}
             returnKeyType="send"
             onSubmitEditing={handleSubmit}
             value={password}

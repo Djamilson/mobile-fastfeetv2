@@ -31,7 +31,9 @@ import {
 } from './styles';
 
 export default function ProductDetail({navigation, route}) {
-  const deliveryman_id = useSelector((state) => state.user.profile.id);
+  const deliveryman_id = useSelector(
+    (state) => state.user.profile.deliverymanId,
+  );
 
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(route.params.item);

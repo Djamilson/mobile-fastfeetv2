@@ -30,7 +30,10 @@ import {
 } from './styles';
 
 export default function Dashboard({navigation}) {
-  const deliverymanId = useSelector((state) => state.user.profile.id);
+  const deliveryman = useSelector((state) => state.user.profile);
+  const deliverymanId = useSelector(
+    (state) => state.user.profile.deliverymanId,
+  );
   const [orders, setOrders] = useState([]);
   const isFocused = useIsFocused();
 
@@ -62,7 +65,6 @@ export default function Dashboard({navigation}) {
   }
 
   async function loadPage(pageNumber = page, shouldRefresh = false) {
-
     setCount(count + 1);
     try {
       if (loading) return;

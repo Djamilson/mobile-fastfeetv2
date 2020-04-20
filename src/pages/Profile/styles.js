@@ -50,7 +50,9 @@ export const Label = styled.Text`
   font-size: ${fonts.regular}px;
   color: ${colors.white_};
   font-weight: bold;
+  margin-bottom: 5px;
 `;
+
 export const FormInput = styled(Input)``;
 
 export const Separator = styled.View`

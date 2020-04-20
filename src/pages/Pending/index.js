@@ -28,7 +28,9 @@ import {
 } from './styles';
 
 export default function Pending({navigation}) {
-  const deliveryman_id = useSelector((state) => state.user.profile.id);
+  const deliveryman_id = useSelector(
+    (state) => state.user.profile.deliverymanId,
+  );
   const [pending, setPending] = useState([]);
   const [pendingOld, setPendingOld] = useState([]);
 

@@ -8,10 +8,11 @@ import {signInFaileru, updateProfileSuccess} from '../user/actions';
 import {signFailure, signInSuccess} from './actions';
 
 export function* signIn({payload}) {
-  const {password} = payload;
+  const {email, password} = payload;
 
   try {
-    const response = yield call(api.post, `deliveryman/sessions`, {
+    const response = yield call(api.post, 'sessions', {
+      email,
       password,
     });
 
