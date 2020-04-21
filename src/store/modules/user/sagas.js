@@ -8,10 +8,17 @@ import {updateProfileSuccess, updateProfilefailure} from './actions';
 
 export function* updateProfile({payload}) {
   try {
-    const {data} = payload;
-    const {id} = payload.data;
+    const {phone, name, email, ...rest} = payload.data;
 
-    const resp = yield call(api.put, `deliveryman/${id}/profile`, {data});
+    const data = {
+      name,
+      email,
+      phone,
+
+      ...(rest.oldPassword ? rest : {}),
+    };
+
+    const resp = yield call(api.put, `deliveryman/profile`, {data});
 
     Alert.alert('Sucesso!', 'Seu perfil foi atualizado!');
 

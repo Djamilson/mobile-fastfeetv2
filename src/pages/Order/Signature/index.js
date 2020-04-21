@@ -100,7 +100,7 @@ export default function Signature({navigation, route}) {
       if (final === '401') {
         Alert.alert(
           'Atenção',
-          'Essa entrega  já foi realizada, tente atualizar a lista de entrega!',
+          'Essa entrega já foi feita, tente atualizar a lista de entrega!',
         );
         return;
       }
