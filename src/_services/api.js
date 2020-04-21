@@ -10,7 +10,7 @@ if (__DEV__) {
   baseURL = `http://${WEBHOST}:${PORT}`;
 }
 // depois só remover essa linha
-//baseURL = `https://www.ofertadodia.palmas.br`;
+// baseURL = `https://www.ofertadodia.palmas.br`;
 
 const api = axios.create({
   baseURL,
