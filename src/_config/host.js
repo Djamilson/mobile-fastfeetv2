@@ -12,7 +12,7 @@ if (__DEV__) {
 }
 
 export default {
-  LOCALHOST: '192.168.0.125',
+  LOCALHOST: '192.168.10.105',
   PORT: 3001,
   WEBHOST: url,
 };

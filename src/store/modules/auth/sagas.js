@@ -92,11 +92,11 @@ export function* signIn({payload}) {
 
 export function* acceptRegulationUp({payload}) {
   try {
-    const {id, newPrivacy} = payload.id;
-
+    const {personId, newPrivacy} = payload;
+    console.log('Payload::', payload);
     const resp = yield call(api.put, 'accept_regulation', {
       newPrivacy,
-      deliveryman_id: id,
+      person_id: personId,
     });
 
     const {user} = resp.data;

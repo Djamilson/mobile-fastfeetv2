@@ -36,9 +36,9 @@ export function signOut() {
   };
 }
 
-export function acceptionRegulation(id, newPrivacy) {
+export function acceptionRegulation(personId, newPrivacy) {
   return {
     type: '@auth/ACCEPT_REGULATION',
-    payload: {id, newPrivacy},
+    payload: {personId, newPrivacy},
   };
 }

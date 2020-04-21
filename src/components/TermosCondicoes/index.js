@@ -21,18 +21,18 @@ import {
 export default function TermosCondicoes({
   toggleModal,
   isModalVisible,
-  navigation,
   isApproveButton,
 }) {
   const [privacy] = useState(useSelector((state) => state));
   const dispatch = useDispatch();
-  const [id] = useState(useSelector((state) => state.user.profile.id));
+
+  const [personId] = useState(
+    useSelector((state) => state.user.profile.person.id),
+  );
 
   function handleAcceptRegulation() {
     const newPrivacy = !privacy;
-
-    const {navigate} = navigation;
-    dispatch(acceptionRegulation({id, newPrivacy, navigate}));
+    dispatch(acceptionRegulation(personId, newPrivacy));
     toggleModal();
   }
 
@@ -66,7 +66,4 @@ TermosCondicoes.propTypes = {
   toggleModal: PropTypes.func.isRequired,
   isModalVisible: PropTypes.bool.isRequired,
   isApproveButton: PropTypes.bool.isRequired,
-  navigation: PropTypes.shape({
-    navigate: PropTypes.func.isRequired,
-  }).isRequired,
 };
