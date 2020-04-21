@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useRef, useState, useEffect} from 'react';
 import {Alert} from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import IconCam from 'react-native-vector-icons/MaterialIcons';
@@ -32,7 +32,12 @@ export default function Profile() {
   const prefixRef = useRef();
   const numberRef = useRef();
 
-  const {id} = profile;
+  const oldPasswordRef = useRef();
+  const passwordRef = useRef();
+  const confirmPasswordRef = useRef();
+
+  console.log('profile::', profile);
+
   const {id: avatar_id} = profile.person.avatar;
   const {id: phone_id} = profile.person.phone;
 
@@ -42,12 +47,24 @@ export default function Profile() {
   const [prefix, setPrefix] = useState(profile.person.phone.prefix);
   const [number, setNumber] = useState(profile.person.phone.number);
 
+  const [oldPassword, setOldPassword] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  useEffect(() => {
+    setOldPassword('');
+    setPassword('');
+    setConfirmPassword('');
+  }, [profile]);
+
   function handleSubmit() {
     dispatch(
       updateProfileRequest({
-        id,
         name,
         email,
+        oldPassword,
+        password,
+        confirmPassword,
         phone: {phone_id, prefix, number},
       }),
     );
@@ -191,6 +208,40 @@ export default function Profile() {
 
           <Separator />
 
+          <FormInput
+            icon="lock-outline"
+            secureTextEntry
+            placeholder="Sua senha atual"
+            ref={oldPasswordRef}
+            returnKeyType="next"
+            onSubmitEditing={() => passwordRef.current.focus()}
+            value={oldPassword}
+            onChangeText={setOldPassword}
+          />
+
+          <FormInput
+            icon="lock-outline"
+            secureTextEntry
+            placeholder="Sua nova senha"
+            ref={passwordRef}
+            returnKeyType="next"
+            onSubmitEditing={() => confirmPasswordRef.current.focus()}
+            value={password}
+            onChangeText={setPassword}
+          />
+
+          <FormInput
+            icon="lock-outline"
+            secureTextEntry
+            placeholder="Confirmação de senha"
+            ref={confirmPasswordRef}
+            returnKeyType="send"
+            onSubmitEditing={handleSubmit}
+            value={confirmPassword}
+            onChangeText={setConfirmPassword}
+          />
+
+          <Separator />
           <SubmitButton loading={loading} onPress={handleSubmit}>
             Atualizar perfil
           </SubmitButton>
