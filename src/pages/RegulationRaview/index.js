@@ -13,14 +13,14 @@ export default function RegulationRaview() {
     useSelector((state) => state.user.profile.person.privacy),
   );
 
-  // deliveryman_id
-  const [id] = useState(
-    useSelector((state) => state.user.profile.deliverymanId),
+  // person_id
+  const [personId] = useState(
+    useSelector((state) => state.user.profile.person.id),
   );
 
   function handleAcceptRegulation() {
     const newPrivacy = !privacy;
-    dispatch(acceptionRegulation({id, newPrivacy}));
+    dispatch(acceptionRegulation(personId, newPrivacy));
   }
 
   return (
