@@ -107,7 +107,8 @@ export default function Signature({navigation, route}) {
 
       Alert.alert(
         'Atenção!',
-        'Não foi possível finalizar a entrega, tente novamente!',
+        `meu erro ${error}
+        Não foi possível finalizar a entrega, tente novamente!`,
       );
     }
   }
