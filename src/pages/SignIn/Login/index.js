@@ -1,6 +1,8 @@
 import React, {useRef, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
+import PropTypes from 'prop-types';
+
 import logo from '~/assets/fastfeet-logo.png';
 import Background from '~/components/Background';
 import {signInRequest} from '~/store/modules/auth/actions';
@@ -12,9 +14,11 @@ import {
   FormInput,
   SubmitButton,
   LogoImg,
+  ResetPasswordLink,
+  ResetPasswordLinkText,
 } from './styles';
 
-export default function SignIn() {
+export default function SignIn({navigation}) {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.auth.loading);
 
@@ -62,7 +66,18 @@ export default function SignIn() {
             Entrar no sistema
           </SubmitButton>
         </Form>
+
+        <ResetPasswordLink
+          onPress={() => navigation.navigate('ForgetFormEmail')}>
+          <ResetPasswordLinkText>Esqueceu a senha? </ResetPasswordLinkText>
+        </ResetPasswordLink>
       </Container>
     </Background>
   );
 }
+
+SignIn.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+};

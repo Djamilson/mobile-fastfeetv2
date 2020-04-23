@@ -8,7 +8,7 @@ export const Container = styled(RectButton)`
   height: 46px;
   background: #3b9eff;
   border-radius: 4px;
-  opacity: ${props => (props.enabled ? 1 : 0.7)};
+  opacity: ${(props) => (props.enabled ? 1 : 0.7)};
   align-items: center;
   justify-content: center;
 `;

@@ -11,5 +11,5 @@ export default {
   small_regular: 13,
   small: 12,
   smaller: 11,
-  minsmall:8,
+  minsmall: 8,
 };
