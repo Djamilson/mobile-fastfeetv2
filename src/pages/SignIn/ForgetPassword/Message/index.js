@@ -11,7 +11,7 @@ export default function Message({email, nameIcon}) {
       <Icon name={nameIcon} size={30} color="#ffe119" />
       <Info>
         <Name>
-          Acesse o email {email} para ter ao código de ativação da conta!
+          Acesse o email {email} para ver o código de redefinição de senha!
         </Name>
       </Info>
     </Container>

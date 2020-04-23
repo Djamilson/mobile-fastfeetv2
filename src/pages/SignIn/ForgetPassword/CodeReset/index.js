@@ -109,7 +109,7 @@ export default function CodeReset({navigation, route}) {
 
     Alert.alert(
       'Atenção! ',
-      `Código de validação incorreto, tente novamente, ou crie novo código!`,
+      `Código de validação está incorreto, tente novamente, ou crie novo código!`,
     );
   }
 
