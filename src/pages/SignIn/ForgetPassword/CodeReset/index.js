@@ -34,6 +34,7 @@ export default function CodeReset({navigation, route}) {
     async function loadToken() {
       try {
         setLoading(true);
+
         const res = await api.get(`mobile/forget_password`, {
           params: {
             email,
@@ -47,6 +48,7 @@ export default function CodeReset({navigation, route}) {
 
         const str = error.toString();
         const final = str.replace(/\D/g, '');
+        console.log('error:', error);
 
         if (final === '400') {
           Alert.alert(
@@ -59,7 +61,7 @@ export default function CodeReset({navigation, route}) {
         if (final === '401') {
           Alert.alert(
             'Erro na validação do código',
-            'Esse token não existe, crie um novo token!',
+            `${error} <<- =>${email} Esse token não existe, crie um novo token!`,
           );
           return;
         }
