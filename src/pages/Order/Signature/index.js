@@ -21,11 +21,11 @@ import {
   ButtonSelect,
   SignatureStyled,
   ButtonSave,
-  ButtonText,
 } from './styles';
 
 export default function Signature({navigation, route}) {
   const {order_id} = route.params;
+  const [loading, setLoading] = useState(false);
 
   const [image, setImage] = useState({preview: '', file: ''});
 
@@ -81,12 +81,14 @@ export default function Signature({navigation, route}) {
     data.append('order_id', order_id);
 
     try {
+      setLoading(true);
       await api.put(`orders/${order_id}/subscriptions`, data);
 
       Alert.alert('Sucesso!', 'Assinatura cadastrada!');
-
+      setLoading(false);
       navigation.navigate('Dashboard');
     } catch (error) {
+      setLoading(false);
       const str = error.toString();
       const final = str.replace(/\D/g, '');
 
@@ -135,8 +137,8 @@ export default function Signature({navigation, route}) {
               </CardButton>
             </CardImage>
             {!!image.preview && (
-              <ButtonSave onPress={() => handleSubmit()}>
-                <ButtonText>Enviar</ButtonText>
+              <ButtonSave loading={loading} onPress={handleSubmit}>
+                Enviar
               </ButtonSave>
             )}
           </Card>

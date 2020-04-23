@@ -42,7 +42,7 @@ export default function ListProblem({navigation, route}) {
         {loading && <Loading loading={loading}>Carregando ...</Loading>}
         {!loading && deliveryProblems.length < 1 ? (
           <Message nameIcon="exclamation-triangle">
-            Ops!! Essa entrega não tem problema cadastradas no momento!
+            Ops!! Essa entrega não tem problema cadastrado no momento!
           </Message>
         ) : (
           <Card>

@@ -15,7 +15,10 @@ import OrderDelivered from '~/pages/OrderDelivered';
 import Pending from '~/pages/Pending';
 import Profile from '~/pages/Profile';
 import RegulationReview from '~/pages/RegulationRaview';
-import SignIn from '~/pages/SignIn';
+import ForgetCodeReset from '~/pages/SignIn/ForgetPassword/CodeReset';
+import ForgetFormEmail from '~/pages/SignIn/ForgetPassword/FormEmail';
+import ForgetNewPassword from '~/pages/SignIn/ForgetPassword/NewPassword';
+import SignIn from '~/pages/SignIn/Login';
 import colors from '~/styles/colors';
 
 const Stack = createStackNavigator();
@@ -174,6 +177,9 @@ function getInitialRoute(isSigned, acceped_regulation) {
   return (
     <Stack.Navigator headerMode="none">
       <Stack.Screen name="SignIn" component={SignIn} />
+      <Stack.Screen name="ForgetFormEmail" component={ForgetFormEmail} />
+      <Stack.Screen name="ForgetCodeReset" component={ForgetCodeReset} />
+      <Stack.Screen name="ForgetNewPassword" component={ForgetNewPassword} />
     </Stack.Navigator>
   );
 }

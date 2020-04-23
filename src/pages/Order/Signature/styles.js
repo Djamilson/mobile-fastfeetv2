@@ -3,6 +3,7 @@ import {RectButton} from 'react-native-gesture-handler';
 
 import styled from 'styled-components/native';
 
+import Button from '~/components/Button';
 import {colors, metrics, fonts} from '~/styles';
 
 export const Container = styled.View`
@@ -71,7 +72,7 @@ export const SignatureStyled = styled.Image`
   border-radius: ${metrics.border_radius}px;
 `;
 
-export const ButtonSave = styled(RectButton)`
+export const ButtonSave = styled(Button)`
   padding: 20px;
   border-radius: 5px;
   background: ${colors.third};
