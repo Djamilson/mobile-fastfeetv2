@@ -25,18 +25,13 @@ export default function FormEmail({navigation}) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    AsyncStorage.getItem('@fastfeetforgetpassword').then(
-      (fastfeetforgetpassword) => {
-        if (
-          fastfeetforgetpassword !== undefined &&
-          fastfeetforgetpassword !== null
-        ) {
-          navigation.navigate('ForgetCodeReset', {
-            email: fastfeetforgetpassword,
-          });
-        }
-      },
-    );
+    AsyncStorage.getItem('@fastfeetforgetpassword').then((fastfeetemail) => {
+      if (fastfeetemail !== undefined && fastfeetemail !== null) {
+        navigation.navigate('ForgetCodeReset', {
+          email: fastfeetemail,
+        });
+      }
+    });
   }, [navigation]);
 
   const saveEmail = async () => {
