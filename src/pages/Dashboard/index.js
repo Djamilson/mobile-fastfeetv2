@@ -115,19 +115,9 @@ export default function Dashboard({navigation}) {
     if (isFocused) {
       setOrders([]);
       setVisible(false);
-      // refreshList();
       init();
     }
-  }, [isFocused, page]);
-
-  // isFocused, page
-  /*
-  useEffect(() => {
-    if (page === 1) {
-      setVisible(false);
-      init();
-    }
-  }, []); */
+  }, []);
 
   return (
     <Background>

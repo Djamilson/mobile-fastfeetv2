@@ -34,16 +34,6 @@ export function* signIn({payload}) {
       return;
     }
 
-    if (final === '401') {
-      Alert.alert(
-        'Erro no login',
-        'Sua conta ainda não foi validada, acesse seu email para vê o código de ativação!',
-      );
-
-      yield put(signFailure());
-      return;
-    }
-
     if (final === '402') {
       Alert.alert(
         'Erro no login',
