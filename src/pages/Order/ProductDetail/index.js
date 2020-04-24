@@ -71,7 +71,7 @@ export default function ProductDetail({navigation, route}) {
   function handleSignature(item) {
     const {id: order_id, end_date} = item;
     if (end_date) {
-      Alert.alert('Opss !!', 'Essa entrega já foi realizada.');
+      Alert.alert('Oopss!', 'Essa entrega já foi realizada.');
       return;
     }
     navigation.navigate('Signature', {
