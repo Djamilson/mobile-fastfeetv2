@@ -53,6 +53,7 @@ export default function Pending({navigation}) {
     Animated.timing(animatedValue, {
       toValue: 1,
       duration: 350,
+      useNativeDriver: true,
     }).start(closeToast());
   }
 

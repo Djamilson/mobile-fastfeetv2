@@ -4,35 +4,30 @@ import styled from 'styled-components/native';
 
 import Button from '~/components/Button';
 import {colors, fonts, metrics} from '~/styles';
+import {heightPercentageToDP, widthDimension} from '~/utils/Layout';
 
 export const Container = styled.SafeAreaView`
   flex: 1;
   flex-direction: column;
 `;
 
-export const Header = styled.View`
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 160px;
-  background: ${colors.third};
-  padding: 15px;
-  color: ${colors.white_};
-`;
-
 export const Box = styled.ScrollView.attrs({
   showsVerticalScrollIndicator: false,
-  contentContainerStyle: {padding: 30},
+  contentContainerStyle: {
+    paddingTop: 38,
+  },
 })`
-  align-self: stretch;
+  margin: 0px 20px;
+  top: ${heightPercentageToDP('-13%')}px;
+  min-height: ${heightPercentageToDP('75%')}px;
 `;
 
 export const CadProduct = styled.View`
   flex: 1;
-  top: -90px;
+  top: 0;
+  top: ${heightPercentageToDP('-5%')}px;
   flex-direction: column;
   align-items: flex-start;
-  margin: 20px;
   background: ${colors.white_};
   border-radius: ${metrics.border_radius}px;
 `;
@@ -114,8 +109,8 @@ export const TitleStatus = styled.Text`
 
 export const ContainerTime = styled.View`
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: ${widthDimension < 370 ? 'column' : 'row'};
+  align-items: ${widthDimension < 370 ? 'flex-start' : 'center'};
   justify-content: space-between;
   padding-bottom: 10px;
 `;

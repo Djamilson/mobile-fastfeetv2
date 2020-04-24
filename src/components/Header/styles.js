@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
-import metrics from '~/styles/metrics';
-import colors from '~/styles/colors';
-import fonts from '~/styles/fonts';
+
+import {colors, fonts, metrics} from '~/styles';
+import {heightPercentageToDP} from '~/utils/Layout';
 
 export const Container = styled.View`
   padding: ${metrics.padding}px;
@@ -24,7 +24,7 @@ export const ProfileInfo = styled.View`
 
 export const Name = styled.Text`
   font-weight: bold;
-  font-size: ${fonts.bigbig}px;
+  font-size: ${fonts.big}px;
   color: ${colors.dark};
   margin-top: 5px;
 `;
@@ -41,7 +41,7 @@ export const ButtonContainer = styled.View`
 `;
 
 export const ButtonLogout = styled.TouchableOpacity`
-  padding-right: 30px;
+  padding-right: ${heightPercentageToDP('2%')}px;
 `;
 
 export const ButtonPrivacy = styled.TouchableOpacity`

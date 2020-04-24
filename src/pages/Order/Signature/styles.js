@@ -5,6 +5,7 @@ import styled from 'styled-components/native';
 
 import Button from '~/components/Button';
 import {colors, metrics, fonts} from '~/styles';
+import {heightPercentageToDP} from '~/utils/Layout';
 
 export const Container = styled.View`
   flex: 1;
@@ -25,6 +26,11 @@ export const Card = styled.View`
   top: 15px;
   margin-top: ${metrics.margin_top}px;
   background: ${colors.white_};
+
+  top: ${heightPercentageToDP('5%')}px;
+
+  border-width: ${StyleSheet.hairlineWidth}px;
+  border-color: ${colors.fourth};
 `;
 
 export const CardImage = styled.View`
@@ -41,6 +47,7 @@ export const CardContent = styled.View`
   justify-content: center;
   border: ${StyleSheet.hairlineWidth}px;
   border-radius: ${metrics.border_radius}px;
+  border: none;
 `;
 
 export const Description = styled.Text`
