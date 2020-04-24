@@ -15,6 +15,7 @@ import {colors, fonts} from '~/styles';
 import {
   Container,
   TitleStatus,
+  Box,
   CadProduct,
   Product,
   ContainerProduct,
@@ -128,73 +129,74 @@ export default function ProductDetail({navigation, route}) {
     <Background>
       <Container>
         <Header navigation={navigation} />
+        <Box>
+          <CadProduct>
+            <ContainerProduct>
+              <Product>
+                <HeaderOrder product="Informações da entrega" />
+                <ProductView>
+                  <Label>DESTINATÁRIO</Label>
+                  <InfoText>{data.ord.recipient.person.name}</InfoText>
+                  <Label>ENDEREÇO DE ENTREGA</Label>
+                  <InfoAddress>
+                    {data.ord.recipient.address.street},{' '}
+                    {data.ord.recipient.address.number},{' '}
+                    {data.ord.recipient.address.complement},{' '}
+                    {data.ord.recipient.address.district},{' '}
+                    {data.ord.recipient.address.city.name}-
+                    {data.ord.recipient.address.city.state.acronym},{' '}
+                    {data.ord.recipient.address.zip_code},
+                  </InfoAddress>
+                  <Label>PRODUTO</Label>
+                  <InfoText>{data.ord.product}</InfoText>
+                </ProductView>
+              </Product>
+            </ContainerProduct>
+            <ContainerProduct>
+              <DeliveryDetail>
+                <HeaderDelivery>
+                  <Icon name="calendar" size={fonts.big} color={colors.third} />
+                  <TitleStatus>Situação da entrega</TitleStatus>
+                </HeaderDelivery>
+                <Label>STATUS</Label>
+                <InfoText>{data.ord.status}</InfoText>
+                <ContainerTime>
+                  <Date>
+                    <Label>DATA DE RETIRADA</Label>
+                    <InfoTime>
+                      {data.start_date !== undefined
+                        ? `${data.start_date}`
+                        : '-- /-- /--'}
+                    </InfoTime>
+                  </Date>
+                  <Date>
+                    <Label>DATA DE ENTREGA</Label>
+                    <InfoTime>
+                      {data.end_date !== undefined
+                        ? `${data.end_date}`
+                        : '-- /-- /--'}
+                    </InfoTime>
+                  </Date>
+                </ContainerTime>
+              </DeliveryDetail>
+            </ContainerProduct>
 
-        <CadProduct>
-          <ContainerProduct>
-            <Product>
-              <HeaderOrder product="Informações da entrega" />
-              <ProductView>
-                <Label>DESTINATÁRIO</Label>
-                <InfoText>{data.ord.recipient.person.name}</InfoText>
-                <Label>ENDEREÇO DE ENTREGA</Label>
-                <InfoAddress>
-                  {data.ord.recipient.address.street},{' '}
-                  {data.ord.recipient.address.number},{' '}
-                  {data.ord.recipient.address.complement},{' '}
-                  {data.ord.recipient.address.district},{' '}
-                  {data.ord.recipient.address.city.name}-
-                  {data.ord.recipient.address.city.state.acronym},{' '}
-                  {data.ord.recipient.address.zip_code},
-                </InfoAddress>
-                <Label>PRODUTO</Label>
-                <InfoText>{data.ord.product}</InfoText>
-              </ProductView>
-            </Product>
-          </ContainerProduct>
-          <ContainerProduct>
-            <DeliveryDetail>
-              <HeaderDelivery>
-                <Icon name="calendar" size={fonts.big} color={colors.third} />
-                <TitleStatus>Situação da entrega</TitleStatus>
-              </HeaderDelivery>
-              <Label>STATUS</Label>
-              <InfoText>{data.ord.status}</InfoText>
-              <ContainerTime>
-                <Date>
-                  <Label>DATA DE RETIRADA</Label>
-                  <InfoTime>
-                    {data.start_date !== undefined
-                      ? `${data.start_date}`
-                      : '-- /-- /--'}
-                  </InfoTime>
-                </Date>
-                <Date>
-                  <Label>DATA DE ENTREGA</Label>
-                  <InfoTime>
-                    {data.end_date !== undefined
-                      ? `${data.end_date}`
-                      : '-- /-- /--'}
-                  </InfoTime>
-                </Date>
-              </ContainerTime>
-            </DeliveryDetail>
-          </ContainerProduct>
-
-          {!data.ord.start_date ? (
-            <Withdrawal
-              loading={loading}
-              onPress={() => handleMakethewithdrawal(data.ord)}>
-              Fazer retirada
-            </Withdrawal>
-          ) : (
-            <Tabs
-              navigation={navigation}
-              deliveryProblem={() => deliveryProblem(data.ord)}
-              listProblem={() => listProblem(data.ord)}
-              handleSignature={() => handleSignature(data.ord)}
-            />
-          )}
-        </CadProduct>
+            {!data.ord.start_date ? (
+              <Withdrawal
+                loading={loading}
+                onPress={() => handleMakethewithdrawal(data.ord)}>
+                Fazer retirada
+              </Withdrawal>
+            ) : (
+              <Tabs
+                navigation={navigation}
+                deliveryProblem={() => deliveryProblem(data.ord)}
+                listProblem={() => listProblem(data.ord)}
+                handleSignature={() => handleSignature(data.ord)}
+              />
+            )}
+          </CadProduct>
+        </Box>
       </Container>
     </Background>
   );
