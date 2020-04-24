@@ -15,6 +15,7 @@ export const Box = styled.ScrollView.attrs({
   showsVerticalScrollIndicator: false,
   contentContainerStyle: {
     paddingTop: 38,
+    paddingBottom: 0,
   },
 })`
   margin: 0px 20px;
