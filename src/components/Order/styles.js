@@ -3,6 +3,7 @@ import {StyleSheet} from 'react-native';
 import styled from 'styled-components/native';
 
 import {colors, fonts, metrics} from '~/styles';
+import {heightPercentageToDP, widthPercentageToDP} from '~/utils/Layout';
 
 export const Container = styled.View`
   display: flex;
@@ -21,7 +22,6 @@ export const CardHeader = styled.View`
   align-items: center;
   height: 40px;
   padding-top: 10px;
-  padding-left: 10px;
 `;
 
 export const CardContent = styled.View`
@@ -108,13 +108,11 @@ export const Delivered = styled.Text`
 `;
 
 export const CardFooter = styled.View`
-  display: flex;
   flex-direction: row;
   align-items: center;
-  width: 100%;
   justify-content: space-between;
   background: ${colors.fourteen};
-  padding: 0px 15px;
+  padding: 0px ${heightPercentageToDP('1%')}px;
   height: 70px;
 `;
 
@@ -133,15 +131,14 @@ export const CardFooterLabel = styled.View`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 60%;
-  padding-left: 10px;
-  margin-right: 30px;
+  width: ${widthPercentageToDP('50%')}px;
+  padding-left: ${widthPercentageToDP('1%')}px;
 `;
 export const CardFooterBotton = styled.View`
   display: flex;
-  flex-direction: column;
+  align-items: flex-end;
   justify-content: center;
-  width: 40%;
+  width: 100px;
 `;
 
 export const Annotation = styled.View`

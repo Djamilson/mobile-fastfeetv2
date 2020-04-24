@@ -47,18 +47,10 @@ export default function Header({navigation}) {
         </ProfileInfo>
         <ButtonContainer>
           <ButtonLogout onPress={() => changeLogout()}>
-            <Icon
-              name="ios-log-in"
-              size={fonts.small_big}
-              color={colors.rede}
-            />
+            <Icon name="ios-log-in" size={fonts.big} color={colors.rede} />
           </ButtonLogout>
           <ButtonPrivacy onPress={toggleModalPrivacy}>
-            <FontAwesome
-              name="gear"
-              size={fonts.small_big}
-              color={colors.rede}
-            />
+            <FontAwesome name="gear" size={fonts.big} color={colors.rede} />
           </ButtonPrivacy>
         </ButtonContainer>
       </ProfileContainer>

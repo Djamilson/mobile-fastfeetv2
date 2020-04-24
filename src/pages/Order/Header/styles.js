@@ -1,12 +1,13 @@
 import styled from 'styled-components/native';
 
 import {colors} from '~/styles';
+import {widthPercentageToDP, heightPercentageToDP} from '~/utils/Layout';
 
 export const Container = styled.View`
   display: flex;
   flex-direction: row;
-  width: 100%;
-  height: 160px;
+  width: ${widthPercentageToDP('100%')}px;
+  height: ${heightPercentageToDP('25%')}px;
   background: ${colors.third};
   padding: 15px;
   color: ${colors.white};

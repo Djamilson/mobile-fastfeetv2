@@ -9,7 +9,6 @@ import {useIsFocused} from '@react-navigation/native';
 import api from '~/_services/api';
 import Background from '~/components/Background/default';
 import Header from '~/components/Header';
-import Loading from '~/components/Loading';
 import Message from '~/components/Message';
 import Toast from '~/components/MessageToast';
 import Order from '~/components/Order';
@@ -30,7 +29,6 @@ import {
 } from './styles';
 
 export default function Dashboard({navigation}) {
-  const deliveryman = useSelector((state) => state.user.profile);
   const deliverymanId = useSelector(
     (state) => state.user.profile.deliverymanId,
   );
