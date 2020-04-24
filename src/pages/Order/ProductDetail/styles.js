@@ -20,6 +20,13 @@ export const Header = styled.View`
   color: ${colors.white_};
 `;
 
+export const Box = styled.ScrollView.attrs({
+  showsVerticalScrollIndicator: false,
+  contentContainerStyle: {padding: 30},
+})`
+  align-self: stretch;
+`;
+
 export const CadProduct = styled.View`
   flex: 1;
   top: -90px;

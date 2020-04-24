@@ -117,7 +117,7 @@ export default function Dashboard({navigation}) {
       setVisible(false);
       init();
     }
-  }, []);
+  }, [isFocused]);
 
   return (
     <Background>
