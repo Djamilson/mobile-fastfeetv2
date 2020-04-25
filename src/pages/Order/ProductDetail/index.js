@@ -122,6 +122,13 @@ export default function ProductDetail({navigation, route}) {
       if (final === '403') {
         Alert.alert('Atenção!', 'Só pode retirar 5 produto por dia!');
       }
+
+      if (final === '404') {
+        Alert.alert(
+          'Atenção!',
+          'Horário de retirada de produto é entre 08horas e às 18horas!',
+        );
+      }
     }
   }
 
