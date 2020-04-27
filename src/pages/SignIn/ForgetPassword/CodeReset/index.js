@@ -48,7 +48,6 @@ export default function CodeReset({navigation, route}) {
 
         const str = error.toString();
         const final = str.replace(/\D/g, '');
-        console.log('error:', error);
 
         if (final === '400') {
           Alert.alert(
@@ -61,7 +60,7 @@ export default function CodeReset({navigation, route}) {
         if (final === '401') {
           Alert.alert(
             'Erro na validação do código',
-            `${error} <<- =>${email} Esse token não existe, crie um novo token!`,
+            `Esse token não existe, crie um novo token!`,
           );
           return;
         }

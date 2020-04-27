@@ -36,8 +36,6 @@ export default function Profile() {
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
 
-  console.log('profile::', profile);
-
   const {id: avatar_id} = profile.person.avatar;
   const {id: phone_id} = profile.person.phone;
 
