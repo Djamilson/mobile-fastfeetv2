@@ -141,7 +141,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.mobile"
+        applicationId "com.fastfeet.mobile"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -163,7 +163,7 @@ android {
             keyPassword 'android'
         }
 
-     
+
 
 
         /*if (project.hasProperty('MYAPP_RELEASE_STORE_FILE')) {
