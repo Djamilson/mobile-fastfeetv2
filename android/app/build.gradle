@@ -162,6 +162,7 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        /*
         release {
             if (project.hasProperty('MYAPP_RELEASE_STORE_FILE')) {
                 storeFile file(MYAPP_RELEASE_STORE_FILE)
@@ -169,7 +170,7 @@ android {
                 keyAlias MYAPP_RELEASE_KEY_ALIAS
                 keyPassword MYAPP_RELEASE_KEY_PASSWORD
             }
-        }
+        }*/
     }
     buildTypes {
         debug {
@@ -186,7 +187,7 @@ android {
             // Caution! In production, you need to generate your own keystore file.
             // see https://facebook.github.io/react-native/docs/signed-apk-android.
             //signingConfig signingConfigs.debug
-             signingConfig signingConfigs.release
+             //signingConfig signingConfigs.release
              minifyEnabled true
              shrinkResources true
 
