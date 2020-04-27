@@ -7,6 +7,5 @@ module.exports = {
         rootPathSuffix: 'src',
       },
     ],
-    'module:react-native-dotenv',
   ],
 };
