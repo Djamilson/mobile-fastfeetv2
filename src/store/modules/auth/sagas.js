@@ -118,8 +118,46 @@ export function setToken({payload}) {
   }
 }
 
+export function* createImage({payload}) {
+  try {
+    const {data} = payload.data;
+
+    const resp = yield call(api.post, 'files/mobile', data);
+
+    yield put(updateProfileSuccess(resp.data.user));
+
+    Alert.alert('Sucesso', 'Imagem inserida com sucesso!');
+  } catch (error) {
+    Alert.alert(
+      'Falha ao tentar inserir a imagem',
+      'Houve um erro ao tentar inserir a imagem,  tente novamente',
+    );
+
+    yield put(signInFaileru());
+  }
+}
+
+export function* updateImage({payload}) {
+  try {
+    const {data} = payload.data;
+
+    yield put(updateProfileSuccess(data.user));
+
+    Alert.alert('Sucesso', 'Imagem atualizada com sucesso!');
+  } catch (error) {
+    Alert.alert(
+      'Falha ao tentar atualizar a imagem',
+      'Não foi possível alterar a imagem, tente novamente!',
+    );
+
+    yield put(signInFaileru());
+  }
+}
+
 export default all([
   takeLatest('persist/REHYDRATE', setToken),
   takeLatest('@auth/SIGN_IN_REQUEST', signIn),
   takeLatest('@auth/ACCEPT_REGULATION', acceptRegulationUp),
+  takeLatest('@auth/CREATE_IMAGE', createImage),
+  takeLatest('@auth/UPDATE_IMAGE', updateImage),
 ]);

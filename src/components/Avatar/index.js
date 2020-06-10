@@ -2,26 +2,26 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import localhostConfig from '~/_config/host';
-
 import {Avatar} from './styles';
 
-const {WEBHOST, PORT} = localhostConfig;
-
 export default function Header({data, number}) {
-  let url = `${data.person.avatar.url}`;
+  let url =
+    data.person.avatar !== null
+      ? `${data.person.avatar.url}-xs`
+      : `https://api.adorable.io/avatar/50/${data.person.name}.png`;
 
   if (__DEV__) {
-    url = `http://${WEBHOST}:${PORT}/files/${data.person.avatar.path}`;
+    url =
+      data.person.avatar !== null
+        ? `${data.person.avatar.url}-xs`
+        : `https://api.adorable.io/avatar/50/${data.person.name}.png`;
   }
 
   return (
     <Avatar
       number={number}
       source={{
-        uri: data
-          ? `${url}`
-          : `https://api.adorable.io/avatar/50/${data.person.name}.png`,
+        uri: `${url}`,
       }}
     />
   );

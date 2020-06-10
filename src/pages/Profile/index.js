@@ -7,9 +7,11 @@ import {useSelector, useDispatch} from 'react-redux';
 import api from '~/_services/api';
 import AvatarPreview from '~/components/Avatar';
 import Background from '~/components/Background';
+import {createImage, updateImage} from '~/store/modules/auth/actions';
 import {updateProfileRequest} from '~/store/modules/user/actions';
 import {fonts, colors} from '~/styles';
 
+import Loading from './Loading';
 import {
   Container,
   ContainerAvatar,
@@ -28,6 +30,8 @@ export default function Profile() {
 
   const profile = useSelector((state) => state.user.profile);
   const loading = useSelector((state) => state.user.loading);
+  const [loadingImage, setLoadingImage] = useState(false);
+
   const emailRef = useRef();
   const prefixRef = useRef();
   const numberRef = useRef();
@@ -36,7 +40,6 @@ export default function Profile() {
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
 
-  const {id: avatar_id} = profile.person.avatar;
   const {id: phone_id} = profile.person.phone;
 
   const [image, setImage] = useState({preview: '', file: ''});
@@ -115,25 +118,28 @@ export default function Profile() {
       const data = new FormData();
 
       data.append('file', file);
-      data.append('id', avatar_id);
 
       try {
-        await api.put(`files/${avatar_id}`, data);
-
-        Alert.alert(
-          'Sucesso!',
-          'Imagem atualizada com sucesso, será alterada no próximo login!',
-        );
-      } catch (error) {
-        const str = error.toString();
-        const final = str.replace(/\D/g, '');
-
-        if (final === '400') {
-          Alert.alert(
-            'Atenção!',
-            'Não foi possivel atualizar a imagem, tente novamente.',
-          );
+        if (profile.avatar === null) {
+          setLoadingImage(true);
+          dispatch(createImage({data}));
+          setLoadingImage(loading);
+          return;
         }
+        setLoadingImage(true);
+        const avatar_id =
+          profile.person.avatar === null ? '' : profile.person.avatar.id;
+        data.append('id', avatar_id);
+
+        const res = await api.put(`files/${avatar_id}`, data);
+        dispatch(updateImage({data: res.data}));
+        setLoadingImage(false);
+      } catch (error) {
+        setLoadingImage(false);
+        Alert.alert(
+          'Atenção!',
+          `${error} Não foi possivel atualizar a imagem, tente novamente.`,
+        );
       }
     });
   }
@@ -142,8 +148,20 @@ export default function Profile() {
     <Background>
       <Container>
         <ContainerAvatar>
-          {!image.preview && <AvatarPreview data={profile} number={2.5} />}
-          {!!image.preview && <Avatar number={2.5} source={image.preview} />}
+          {loadingImage === true && (
+            <Loading loading={loadingImage}>
+              Aguarde um momento, estamos redimensionando a imagem para vários
+              tamanhos para melhorar a usabilidade em diferentes dispositivos...
+              OBS: Para corrigir erro de posicionamento da imagem coloque o fone
+              na horizontal ou vertical.
+            </Loading>
+          )}
+          {loadingImage !== true && !image.preview && (
+            <AvatarPreview data={profile} number={2.5} />
+          )}
+          {loadingImage !== true && !!image.preview && (
+            <Avatar number={2.5} source={image.preview} />
+          )}
         </ContainerAvatar>
         <CardButton>
           <ButtonSelect onPress={() => handleSelectImage()}>

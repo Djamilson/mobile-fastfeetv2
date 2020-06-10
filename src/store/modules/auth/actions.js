@@ -42,3 +42,17 @@ export function acceptionRegulation(personId, newPrivacy) {
     payload: {personId, newPrivacy},
   };
 }
+
+export function createImage(data) {
+  return {
+    type: '@auth/CREATE_IMAGE',
+    payload: {data},
+  };
+}
+
+export function updateImage(data) {
+  return {
+    type: '@auth/UPDATE_IMAGE',
+    payload: {data},
+  };
+}
