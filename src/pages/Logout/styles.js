@@ -31,7 +31,7 @@ export const Label = styled.Text`
 
 export const InfoText = styled.Text`
   margin-top: 4px;
-  font-size: ${fonts.bigbig}px;
+  font-size: ${fonts.large}px;
   color: ${colors.dark};
   margin-bottom: 10px;
 `;
