@@ -138,7 +138,7 @@ export default function Profile() {
         setLoadingImage(false);
         Alert.alert(
           'Atenção!',
-          `${error} Não foi possivel atualizar a imagem, tente novamente.`,
+          `Não foi possivel atualizar a imagem, tente novamente.`,
         );
       }
     });
